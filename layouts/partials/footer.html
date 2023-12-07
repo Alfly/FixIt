@@ -8,15 +8,12 @@
       {{- if ne .Site.Params.footer.hugo false -}}
         <div class="footer-line powered{{ with .Site.Params.footer.order.powered }} order-{{ . }}{{ end }}">
           {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo %v">Hugo</a>` hugo.Version -}}
-          {{- $theme := printf `<a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt %v"><img class="fixit-icon" src="%v" alt="FixIt logo" />&nbsp;FixIt</a>`
-            (.Scratch.Get "version")
-            (resources.Get "fixit.svg" | minify).RelPermalink
-          -}}
+          {{- $theme := printf `<a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt %v">FixIt</a>` (.Scratch.Get "version") -}}
           {{- dict "Hugo" $hugo "Theme" $theme | T "footer.poweredBySome" | safeHTML }}
         </div>
       {{- end -}}
 
-      {{- if .Site.Params.footer.copyright | or .Site.Params.footer.author | or .Site.Params.footer.license -}}
+      {{- if .Site.Params.footer.copyright | or .Site.Params.footer.author | or .Site.Params.footer.license | or .Site.Params.ibruce.enable -}}
         <div class="footer-line copyright{{ with .Site.Params.footer.order.copyright }} order-{{ . }}{{ end }}" itemscope itemtype="http://schema.org/CreativeWork">
           {{- /* Copyright year */ -}}
           {{- if ne .Site.Params.footer.copyright false -}}
@@ -41,6 +38,20 @@
           {{- with .Site.Params.footer.license -}}
             <span class="license footer-divider">{{ . | safeHTML }}</span>
           {{- end -}}
+
+          {{- /* 不蒜子 */ -}}
+          {{- if eq .Site.Params.ibruce.enable true -}}
+            {{- $loading := dict "Class" "fa-solid fa-spinner fa-spin fa-fw" | partial "plugin/icon.html" -}}
+            <!-- <div class="footer-line visitor{{ with .Site.Params.footer.order.visitor }} order-{{ . }}{{ end }}"> -->
+              <span id="busuanzi_container_site_uv" class="footer-divider" title='{{ T "footer.siteUV" }}'>
+                {{- dict "Class" "fa-regular fa-user fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_uv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
+              </span>
+              {{- /* NO_SPACING */ -}}
+              <span id="busuanzi_container_site_pv" class="footer-divider" title='{{ T "footer.sitePV" }}'>
+                {{- dict "Class" "fa-regular fa-eye fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_pv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
+              </span>
+            <!-- </div> -->
+          {{- end -}}
         </div>
       {{- end -}}
 
@@ -57,20 +68,6 @@
               </span>
             {{- end -}}
           {{- end -}}
-        </div>
-      {{- end -}}
-
-      {{- /* 不蒜子 */ -}}
-      {{- if eq .Site.Params.ibruce.enable true -}}
-        {{- $loading := dict "Class" "fa-solid fa-spinner fa-spin fa-fw" | partial "plugin/icon.html" -}}
-        <div class="footer-line visitor{{ with .Site.Params.footer.order.visitor }} order-{{ . }}{{ end }}">
-          <span id="busuanzi_container_site_uv" title='{{ T "footer.siteUV" }}'>
-            {{- dict "Class" "fa-regular fa-user fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_uv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
-          </span>
-          {{- /* NO_SPACING */ -}}
-          <span id="busuanzi_container_site_pv" class="footer-divider" title='{{ T "footer.sitePV" }}'>
-            {{- dict "Class" "fa-regular fa-eye fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_pv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
-          </span>
         </div>
       {{- end -}}
       
