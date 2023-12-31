@@ -8,7 +8,7 @@
       {{- if ne .Site.Params.footer.hugo false -}}
         <div class="footer-line powered{{ with .Site.Params.footer.order.powered }} order-{{ . }}{{ end }}">
           {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo %v">Hugo</a>` hugo.Version -}}
-          {{- $theme := printf `<a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt %v">FixIt</a>` (.Scratch.Get "version") -}}
+          {{- $theme := printf `<a href="https://github.com/Alfly/FixIt" target="_blank" rel="external" title="FixIt %v">FixIt</a>` (.Scratch.Get "version") -}}
           {{- dict "Hugo" $hugo "Theme" $theme | T "footer.poweredBySome" | safeHTML }}
         </div>
       {{- end -}}
