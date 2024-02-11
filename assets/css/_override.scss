@@ -2,11 +2,25 @@
 // Override Variables
 // 覆盖变量
 // ==============================
+
+// "Noto Serif SC"
 // @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap');
-@import url('https://fonts.loli.net/css2?family=Noto+Serif+SC&display=swap');
-// $global-font-family:"Noto Serif SC", system-ui, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei UI, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+// @import url('https://fonts.loli.net/css2?family=Noto+Serif+SC&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/fontsource-noto-serif-sc@4.0.0/index.min.css');
+
+// "LXGW WenKai screen r"
+@import url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/lxgwwenkaiscreenr.css");
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css");
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css");
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css");
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css");
+$global-font-family: "LXGW WenKai", system-ui, -apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei UI, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+// $global-font-size: 18px;
+
+/* blog head */
 // $header-title-font-family: "Noto Serif SC";
 
+/* code */
 // @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 $code-font-family: monospace, Source Code Pro, Consolas, Monaco, Fira Code, Menlo;
 $code-font-size: 0.95rem;
